@@ -1,6 +1,6 @@
-# Aelia - Welpike
+# Aelia - Welpike (https://github.com/AeliaDev/name-generator)
 
-from utils import (read_file, save_data, handle_lines, generate_name)
+from utils import read_file, save_data, handle_lines, generate_name
 
 # Ascii art generated with : https://patorjk.com/software/taag
 print(" _   _                                                        _             \n"
