@@ -19,24 +19,17 @@ while language != "en" and language != "fr":
     language = input("Enter the language of the syllables ('en', 'fr') : ")
 
 err = ""
-try:
-    name_length = int(input("Enter the number of syllables for the name : "))
-except ValueError:
-    err = "The number of syllables must be a number."
-    name_length = 0
-else:
-    if name_length <= 0:
-        err = "The number of syllables must be positive."
+name_length = 0
 
 while name_length <= 0:
-    print(err)
     try:
         name_length = int(input("Enter the number of syllables for the name : "))
     except ValueError:
         err = "The number of syllables must be a number."
     else:
-        err = "The number of syllables must be positive."
-
+        if name_length <= 0:
+            err = "The number of syllables must be positive."
+    print(err)
 
 name = generate_name(
     handle_lines(
