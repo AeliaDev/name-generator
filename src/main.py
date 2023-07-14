@@ -12,15 +12,31 @@ print(" _   _                                                        _          
       "                              __/ |                                         \n"
       "                             |___/                        by Aelia (Welpike)")
 
-try:
-    language = input("Enter the language of the syllables (en, fr) : ")
-except:
-    language = "en"
 
+language = input("Enter the language of the syllables ('en', 'fr') : ")
+while language != "en" and language != "fr":
+    print("The language cannot be different than 'en' or 'fr'.")
+    language = input("Enter the language of the syllables ('en', 'fr') : ")
+
+err = ""
 try:
     name_length = int(input("Enter the number of syllables for the name : "))
-except:
-    name_length = 3
+except ValueError:
+    err = "The number of syllables must be a number."
+    name_length = 0
+else:
+    if name_length <= 0:
+        err = "The number of syllables must be positive."
+
+while name_length <= 0:
+    print(err)
+    try:
+        name_length = int(input("Enter the number of syllables for the name : "))
+    except ValueError:
+        err = "The number of syllables must be a number."
+    else:
+        err = "The number of syllables must be positive."
+
 
 name = generate_name(
     handle_lines(
