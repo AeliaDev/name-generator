@@ -1,6 +1,6 @@
-# Aelia - Welpike
+# Aelia - Welpike (https://github.com/AeliaDev/name-generator)
 
-from utils import (read_file, save_data, handle_lines, generate_name)
+from utils import read_file, save_data, handle_lines, generate_name
 
 # Ascii art generated with : https://patorjk.com/software/taag
 print(" _   _                                                        _             \n"
@@ -12,15 +12,24 @@ print(" _   _                                                        _          
       "                              __/ |                                         \n"
       "                             |___/                        by Aelia (Welpike)")
 
-try:
-    language = input("Enter the language of the syllables (en, fr) : ")
-except:
-    language = "en"
 
-try:
-    name_length = int(input("Enter the number of syllables for the name : "))
-except:
-    name_length = 3
+language = input("Enter the language of the syllables ('en', 'fr') : ")
+while language != "en" and language != "fr":
+    print("The language cannot be different than 'en' or 'fr'.")
+    language = input("Enter the language of the syllables ('en', 'fr') : ")
+
+err = ""
+name_length = 0
+
+while name_length <= 0:
+    try:
+        name_length = int(input("Enter the number of syllables for the name : "))
+    except ValueError:
+        err = "The number of syllables must be a number."
+    else:
+        if name_length <= 0:
+            err = "The number of syllables must be positive."
+    print(err)
 
 name = generate_name(
     handle_lines(
