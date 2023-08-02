@@ -1,3 +1,4 @@
+from genpw import pronounceable_passwd
 from random import randint
 
 
@@ -12,28 +13,12 @@ def save_data(file_name, data):
         file.write(f"\n{data}")
 
 
-def handle_lines(lines, language):
-    syllabus = {}
-    if language == "fr":
-        syllabus['consonants'] = lines[0].strip().split(',')
-        syllabus['vowels'] = lines[1].strip().split(',')
+def generate_name(size=6, names_number=10):
+    names = []
+    for _ in range(names_number):
+        name = pronounceable_passwd(size)
 
-    elif language == "en":
-        syllabus['syllables'] = lines[0].strip().split(',')
-    return syllabus
-
-
-def generate_name(syllabus, name_length, language):
-    name = ""
-    for _ in range(name_length):
-        if language == "fr":
-            name += syllabus['consonants'][
-              randint(0, len(syllabus['consonants']) - 1)
-            ] + syllabus['vowels'][
-              randint(0, len(syllabus['vowels']) - 1)
-            ]
-        elif language == "en":
-            name += syllabus['syllables'][
-              randint(0, len(syllabus['syllables']) - 1)
-            ]
-    return name
+        if len(name) != size:
+            continue
+        names.append(name)
+    return names
