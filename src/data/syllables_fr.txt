@@ -1,2 +1,0 @@
-b,c,d,f,g,j,l,m,n,p,zr,s,t,v,z,br,cr,dr,fr,gr,pr,tr,vr,bl,cl,fl,gl,pl,ch
-a,e,é,è,i,o,u,an,in,oi,on,ou
